@@ -1,3 +1,5 @@
+/*@import url("bootstrap/dist/css/bootstrap.min.css");*/
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +12,65 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container{
+  margin: 10vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.search_input{
+  height: 25px;
+}
+
+.items{
+  box-sizing: border-box;
+  padding: 10px 20px 10px 20px;
+  
+  margin-left: 10px;
+  text-align: center;
+  align-items: center;
+  border-radius: 25px;
+  border: 1px solid rgb(95, 244, 255);
+}
+.list{
+  display: flex;
+  justify-content: center;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+li{
+  list-style: none;
+}
+
+.form{
+  display: flex;
+  justify-content: center;
+  margin: 10vh;
+}
+
+.card{
+  transition: box-shadow .3s;
+  border-radius:10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 2vh;
+  cursor: pointer;
+}
+
+.card:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.content-image{
+  float: left;  
+  margin: 10px;
+  width: 350px;
+}
+.content-description{
+  text-align: justify; 
+  font-size: 20px; 
 }

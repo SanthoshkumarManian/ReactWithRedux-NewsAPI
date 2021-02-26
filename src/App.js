@@ -1,56 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+
 import './App.css';
+import Grid from './component/grid/grid';
+import Category from './component/categories/categories';
+import {useDispatch,useSelector} from 'react-redux';
+import {fetchApi,getData} from './reducer/newsSlice';
+
 
 function App() {
+    const dispatch=useDispatch();
+    const data = useSelector(getData);
+    const post = data.data;
+    const onclick=(e)=>{
+      e.preventDefault();
+      const value=e.target.text.value;
+      dispatch(fetchApi(value));
+    }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+        <form className="form" onSubmit={(e)=>onclick(e)}>
+            <input className="search_input" name="text"></input>
+            <button type="submit">search</button>
+        </form>
+        <Category/>
+        <div className="container">
+     
+        {
+            post.map(element=>{
+              return <Grid key={element.title} post={element} />
+            })
+           
+        }  
+        </div>
     </div>
   );
 }
